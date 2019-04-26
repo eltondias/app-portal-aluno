@@ -1,0 +1,109 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Mensalidades
+      </ion-title>
+
+      
+          
+      
+       <!-- <ion-chip slot="end" (click)="presentPopover()"  >
+          <ion-label>Default</ion-label>
+        </ion-chip> -->
+
+    
+
+    </ion-toolbar>
+  </ion-header>
+<ion-content>
+
+
+    <!-- <ion-header>
+    <ion-toolbar>       
+        <ion-title>
+          Mensalidades
+        </ion-title>
+      </ion-toolbar>
+    </ion-header> -->
+
+
+  <div class="container p-2" >
+
+      <div class="row mb-4">
+
+          <div class="col-sm-10">     
+            
+             
+       
+              <mat-form-field>
+                  <mat-label>Selecione o semestre</mat-label>
+                  <mat-select required [(ngModel)]="peridoSelecionado" name="periodo">
+                    <mat-option *ngFor="let semestre of semestres" value="{{semestre.ano}}|{{semestre.seqano}}"
+                      (click)="getPeriodo()">
+                      {{semestre.seqano}}º semestre de {{semestre.ano}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+               
+                
+                                                                    
+          </div>
+         
+      </div>
+
+    <div class="row">
+      <div class="col-sm">
+
+     <table class="table table-striped table-responsive" style="font-size: 0.7em" *ngIf="mensalidades.length > 0" >
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Parcela</th>
+            <th scope="col">Vencimento</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Pagamento</th>
+            <th scope="col">Desconto</th>
+            <th scope="col">Valor pago</th>
+            <th scope="col">Multa</th>
+            <th scope="col">Juros</th>
+            <th scope="col">Boleto</th>        
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mensalidade of mensalidades" >
+            <th scope="row"> {{mensalidade.parcel}} </th>
+            <td>{{mensalidade.datven}}</td>
+            <td>
+                <ion-badge color="primary">{{util.BRL(mensalidade.valor_parcela)}}</ion-badge></td>
+            <td>{{mensalidade.datpagto}}</td>
+            <td>{{util.BRL(mensalidade.valdes)}}</td>
+            <td>
+                <ion-badge color="warning" *ngIf="!mensalidade.datpagto"  >{{util.BRL(mensalidade.valorpago)}}</ion-badge>
+                <ion-badge color="success" *ngIf="mensalidade.datpagto">{{util.BRL(mensalidade.valorpago)}}</ion-badge>
+             </td>
+            <td>{{util.BRL(mensalidade.multa)}}</td>
+            <td>{{util.BRL(mensalidade.juros)}}</td>
+            <td>             
+                <ion-button shape="round"  (click)="gerarBoleto(mensalidade.id)"   size="small" *ngIf="!mensalidade.datpagto" color="primary">
+                    Visualizar
+                </ion-button>
+
+                <ion-button shape="round" size="small" *ngIf="mensalidade.datpagto" color="dark" [disabled]="true" >
+                    Visualizar
+                </ion-button>
+
+            </td>          
+          </tr>                    
+        </tbody>
+      </table>
+
+      <!-- <div class="alert alert-info" role="alert" *ngIf="mensalidades.length  === 0">
+         Não há pagamentos para esse periodo.
+        </div> -->
+      
+    </div>
+  </div>
+</div>
+</ion-content>

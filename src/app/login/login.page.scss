@@ -1,0 +1,83 @@
+.bg {     
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: url('../../assets/bg_login.jpg') center center no-repeat fixed; 
+    // background: url('https://scontent.fbel1-1.fna.fbcdn.net/v/t1.0-9/34258939_2049686295050237_8659056013250396160_n.jpg?_nc_cat=105&_nc_ht=scontent.fbel1-1.fna&oh=3f46ff931510204c6096e4b3352447ae&oe=5D332C33') center center no-repeat fixed; 
+    
+    background-position: center top;
+      background-size: 100% auto;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    height: 100%;
+}
+
+.modal-backdrop {
+    background-color: #f8f9fafd;
+}
+
+.logo {
+    width: 13%;
+    margin-left: 4%;
+    margin-top: 3%;
+}
+
+.col-sm {   
+    z-index: 1000;
+}
+.col-sm-4 {   
+    z-index: 1000;
+}
+
+.login {
+    margin-top: 10%;
+    margin-right: 5%;
+}
+ 
+
+.modal-backdrop.show {
+    z-index: auto !important ;
+}
+
+.card-content-md {
+    background-color: white;
+    // padding: 5% 10% 5% 10%;
+}
+
+
+@media (max-width: 768px) {
+
+    .col-sm {      
+        // background:#f8f9fa73;
+    }
+    .col-sm-4 {      
+        // background-color:#f8f9fa73;
+        padding-bottom: 25%;
+    }
+    
+    .logo {
+        width: 32%;
+        padding: 0%;
+        margin: auto;
+        margin-top: 25%;
+        margin-bottom: 7%;
+    }
+
+    .login {
+        margin-top: 0%;
+        margin-right: 0%;
+    }
+
+    .card-content-md {
+        background: none;
+        // padding: 5% 10% 5% 10%;
+    }
+
+    .card-content-ios {
+        background: none;
+        // padding: 5% 10% 5% 10%;
+    }
+    .header {
+        display: none;
+    }
+}

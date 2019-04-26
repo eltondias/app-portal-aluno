@@ -1,0 +1,194 @@
+<ion-header *ngIf="!printActive"  >
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Boletim
+    </ion-title>
+
+    <!-- <button slot="end" shape="round" *ngIf="semestreSelecionado"   color="primary"
+    printSectionId="print-section"            
+    printTitle="Boletim acadêmico- {{semestreSelecionado.ano}}/{{semestreSelecionado.seqano}}"                                          
+    ngxPrint >
+    IMPRIMIR
+    </button> -->
+ 
+    <ion-button color="light" slot="end" (click)="imprimir()"  >
+      Imprimir
+    </ion-button>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="container text-center p-4" *ngIf="!printActive"> 
+    <div class="row">
+      <div class="col-sm">
+        <mat-form-field>
+          <mat-label>Selecione o semestre</mat-label>
+          <mat-select required [(ngModel)]="semestreSelecionado" name="periodo">
+            <mat-option *ngFor="let semestre of semestres; let i = index" [value]="semestre" (click)="getPeriodo(i)">
+              {{semestre.seqano}}º semestre de {{semestre.ano}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container" id="print-section" style="font-size: 0.7em">
+
+
+
+    <div class="row text-center">
+      <div class="col-sm">
+
+        <table class="table table-borderless  text-center">
+          <tbody>
+            <tr>
+              <th scope="row" style="width: 16%;">
+
+                <img src="../../assets/logo.png" width="60%">
+
+              </th>
+              <td>
+
+                <h4>REGISTRO DE DESEMPENHO ACADÊMICO</h4>
+                <p> {{(curso.resolu)? curso.resolu : curso.recon }} </p>
+
+              </td>
+              <td class="p-3">
+                <h6>
+                  EMITIDO EM:
+                </h6>
+                <h6> {{dataHora | date:'dd/MM/yyyy HH:mm:ss' }} </h6>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <!-- <div class="row">
+        <div class="col-sm text-center">
+          <h4>REGISTRO DE DESEMPENHO ACADÊMICO</h4>
+          <p> {{(curso.resolu)? curso.resolu : curso.recon }} </p>
+        </div>
+    </div> -->
+
+    <div class="row" *ngIf="turma">
+      <div class="col-sm">
+
+        <table class="table table-bordered ">
+          <tbody>
+            <tr>
+              <th scope="row">NOME: </th>
+              <td>{{aluno.nome}}</td>
+            </tr>
+            <tr>
+              <th scope="row">TURMA: </th>
+              <td>{{turma.des}}</td>
+            </tr>
+            <tr>
+              <th scope="row">PERÍODO: </th>
+              <td>{{semestreSelecionado.ano}}/{{semestreSelecionado.seqano}} </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+
+    <div class="row  mb-5">
+      <div class="col-sm">
+        <table class="table table-sm table-bordered text-center table-responsive">
+          <thead class="thead-dark">
+
+            <tr>
+              <th scope="col" rowspan="2" class="p-4">DISCIPLINAS</th>
+              <th scope="col" colspan="4">NOTAS PARCIAIS</th>
+              <th scope="col" colspan="2">V.F</th>
+              <th scope="col" rowspan="2" class="p-4"> MÉDIA</th>
+              <th scope="col" colspan="7">FALTAS</th>
+              <th scope="col" rowspan="2" class="p-4">MÉDIA FINAL</th>
+            </tr>
+            <tr>
+              <th scope="col">1ª VC</th>
+              <th scope="col">2ª VC</th>
+              <th scope="col">2ª CHA</th>
+              <th scope="col">TOTAL</th>
+              <th scope="col">NOTA MIN.</th>
+              <th scope="col">NOTA</th>
+              <th scope="col">F.1M</th>
+              <th scope="col">F.2M</th>
+              <th scope="col">F.3M</th>
+              <th scope="col">F.4M</th>
+              <th scope="col">F.5M</th>
+              <th scope="col">T.F</th>
+              <th scope="col">% F.</th>
+            </tr>
+
+          </thead>
+          <tbody>
+            <tr *ngFor="let disciplina of disciplinas">
+              <th scope="row" class="text-left">{{disciplina.descricao_DISCIPLINA}}</th>
+              <td>{{disciplina.coluna_01}}</td>
+              <td>{{disciplina.coluna_02}}</td>
+              <td>---</td>
+              <td>{{disciplina.coluna_03}}</td>
+              <td>{{disciplina.coluna_04}}</td>
+              <td>{{disciplina.coluna_05}}</td>
+              <td>{{disciplina.coluna_06}}</td>
+              <td>{{disciplina.coluna_07}}</td>
+              <td>{{disciplina.coluna_08}}</td>
+              <td>{{disciplina.coluna_09}}</td>
+              <td>{{disciplina.coluna_10}}</td>
+              <td>{{disciplina.coluna_11}}</td>
+              <td>{{disciplina.coluna_12}}</td>
+              <td>{{disciplina.coluna_13}}</td>
+              <td>{{disciplina.coluna_14}}</td>
+            </tr>
+
+            <tr *ngIf="disciplinas[0]" >
+              <td scope="row">RESULTADO FINAL: </td>
+              <th scope="row" colspan="15">
+                {{disciplinas[0].resultado_FINAL}}
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="row text-center">
+      <div class="col-sm">
+
+        <table class="table table-borderless ">
+          <tbody>
+            <tr>
+
+              <th scope="row">Secretário(a) Acadêmico: </th>
+            </tr>
+            <tr>
+              <td>_________________________________________</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+ 
+  </div>
+</ion-content>

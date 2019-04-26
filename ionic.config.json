@@ -1,0 +1,7 @@
+{
+  "name": "app-portal-aluno",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
