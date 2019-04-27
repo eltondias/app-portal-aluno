@@ -93,7 +93,7 @@ export class BoletimPage implements OnInit {
      const w = window;
      //w['title']  =  'Teste';
       w.print();
-      window.location.reload();
+      window.location.href = '/boletim?teste=1';
       // const e = new Event('');
       // window.onafterprint(alert('teste'), e.);
       this.printActive = false;
