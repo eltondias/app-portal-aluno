@@ -7,7 +7,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { MensalidadePage } from './mensalidade.page';
-import { PeriodosPage } from '../periodos/periodos.page';
 import { MaterialModule } from '../material.module';
 
 const routes: Routes = [
@@ -25,7 +24,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MaterialModule
   ],
-  declarations: [MensalidadePage, PeriodosPage],
-  entryComponents: [PeriodosPage]
+  declarations: [MensalidadePage],
+  entryComponents: []
 })
 export class MensalidadePageModule {}

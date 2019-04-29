@@ -1,11 +1,7 @@
 import { BoletimService } from './../services/boletim.service';
-import { AlunoService } from './../services/aluno.service';
 import { UtilProvider } from './../services/util';
 import { Aluno } from './../model/Aluno';
-import { MensalidadeService } from './../services/mensalidade.service';
 import { Component, OnInit } from '@angular/core';
-import { PopoverController, MenuController } from '@ionic/angular';
-import { PeriodosPage } from '../periodos/periodos.page';
 import { TurmaService } from '../services/turma.service';
 import { CursoService } from '../services/curso.service';
 
@@ -30,8 +26,7 @@ export class BoletimPage implements OnInit {
       private boletimService: BoletimService,
       private turmaService: TurmaService,
       private cursoService: CursoService,
-      private util: UtilProvider,
-      private menu: MenuController
+      private util: UtilProvider
   ) { }
 
   ngOnInit() {
@@ -91,11 +86,8 @@ export class BoletimPage implements OnInit {
     this.printActive = true;
     setTimeout(() => {
      const w = window;
-     //w['title']  =  'Teste';
       w.print();
       window.location.href = '/boletim?teste=1';
-      // const e = new Event('');
-      // window.onafterprint(alert('teste'), e.);
       this.printActive = false;
       this.util.menuEmitter.emit(true);
     }, 100);
