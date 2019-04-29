@@ -69,9 +69,13 @@ export class MensalidadePage implements OnInit {
 
   gerarBoleto(id: number) {
     console.log(id);
-    this.alunoService.loginSiteAntigo({ usuario: this.aluno.matric, senha: this.aluno.numcpf }).subscribe((res) => {
-      console.log(res);
-    });
+    const url = 'http://201.20.113.123:8000/boleto-aluno/'+ id + '?matricula=' + this.aluno.matric;
+    window.open(url, '_blank');
+   
+
+    // this.alunoService.loginSiteAntigo({ usuario: this.aluno.matric, senha: this.aluno.numcpf }).subscribe((res) => {
+    //   console.log(res);
+    // });
   }
 
   imprimir() {
