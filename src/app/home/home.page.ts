@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UtilProvider } from '../services/util';
 
 @Component({
   selector: 'app-home',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  aluno = JSON.parse(localStorage.getItem('aluno'));
+
+  constructor(
+ 
+    private util: UtilProvider,
+ 
+) { }
+
+
+
+
 }
+
+

@@ -1,5 +1,5 @@
-<ion-header>
-    <ion-toolbar>
+<ion-header *ngIf="!printActive">
+    <ion-toolbar color="primary">
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
@@ -7,37 +7,22 @@
         Mensalidades
       </ion-title>
 
-      
+      <ion-button color="warning" slot="end" (click)="imprimir()"  >
+          Imprimir
+        </ion-button>
           
-      
-       <!-- <ion-chip slot="end" (click)="presentPopover()"  >
-          <ion-label>Default</ion-label>
-        </ion-chip> -->
-
+ 
     
 
     </ion-toolbar>
   </ion-header>
 <ion-content>
 
+ 
 
-    <!-- <ion-header>
-    <ion-toolbar>       
-        <ion-title>
-          Mensalidades
-        </ion-title>
-      </ion-toolbar>
-    </ion-header> -->
-
-
-  <div class="container p-2" >
-
-      <div class="row mb-4">
-
-          <div class="col-sm-10">     
-            
-             
-       
+    <div class="container text-center p-4" *ngIf="!printActive"> 
+        <div class="row">
+          <div class="col-sm">
               <mat-form-field>
                   <mat-label>Selecione o semestre</mat-label>
                   <mat-select required [(ngModel)]="peridoSelecionado" name="periodo">
@@ -47,12 +32,15 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-               
-                
-                                                                    
           </div>
-         
+        </div>
       </div>
+
+
+
+  <div class="container p-2" >
+
+ 
 
     <div class="row">
       <div class="col-sm">

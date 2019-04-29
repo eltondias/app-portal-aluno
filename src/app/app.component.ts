@@ -17,9 +17,9 @@ export class AppComponent implements OnInit {
 
   public appPages = [
     {
-      title: 'Perfil',
+      title: 'Início',
       url: '/home',
-      icon: 'person'
+      icon: 'home'
     },
     // {
     //   title: 'Declaração IR',

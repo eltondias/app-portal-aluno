@@ -1,5 +1,5 @@
 <ion-header *ngIf="!printActive"  >
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -7,14 +7,8 @@
       Boletim
     </ion-title>
 
-    <!-- <button slot="end" shape="round" *ngIf="semestreSelecionado"   color="primary"
-    printSectionId="print-section"            
-    printTitle="Boletim acadêmico- {{semestreSelecionado.ano}}/{{semestreSelecionado.seqano}}"                                          
-    ngxPrint >
-    IMPRIMIR
-    </button> -->
- 
-    <ion-button color="light" slot="end" (click)="imprimir()"  >
+
+    <ion-button color="warning" slot="end" (click)="imprimir()"  >
       Imprimir
     </ion-button>
 

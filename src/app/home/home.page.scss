@@ -2,3 +2,26 @@
   max-height: 35vh;
   overflow: hidden;
 }
+
+
+.bg {     
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+//  background: url('../../assets/bg_login.jpg') center center no-repeat fixed; 
+  background: url('http://www.esamaz.com.br/themes/theme1/images/wall-quem2.jpg') center center no-repeat fixed; 
+  
+  background-position: center top;
+    background-size: 100% auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  height: 100%;
+}
+
+.col-sm {   
+  z-index: 1000;
+}
+
+.sc-ion-card-md-h {
+  --background: #ffffff;
+}

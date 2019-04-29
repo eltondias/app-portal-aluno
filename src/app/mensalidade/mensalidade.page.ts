@@ -13,7 +13,7 @@ import { PeriodosPage } from '../periodos/periodos.page';
   styleUrls: ['./mensalidade.page.scss'],
 })
 export class MensalidadePage implements OnInit {
-
+  printActive = false;
   aluno = new Aluno();
   mensalidades = [];
   semestres: [] =  JSON.parse(localStorage.getItem('semestres'));
@@ -87,6 +87,19 @@ export class MensalidadePage implements OnInit {
     this.alunoService.loginSiteAntigo({usuario: this.aluno.matric, senha: this.aluno.numcpf }).subscribe((res) => {
       console.log(res);
     });
+  }
+
+  imprimir() {
+    this.util.menuEmitter.emit(false);
+    this.printActive = true;
+    setTimeout(() => {
+     const w = window;
+      w.print();
+      window.location.href = '/mensalidade';
+      this.printActive = false;
+      this.util.menuEmitter.emit(true);
+    }, 100);
+    
   }
 
 
