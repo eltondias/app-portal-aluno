@@ -4,6 +4,7 @@ import { Aluno } from './../model/Aluno';
 import { Component, OnInit } from '@angular/core';
 import { TurmaService } from '../services/turma.service';
 import { CursoService } from '../services/curso.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-boletim',
@@ -15,7 +16,7 @@ export class BoletimPage implements OnInit {
   disciplinas = [];
   aluno = new Aluno();
   mensalidades = [];
-  semestres: [] = JSON.parse(localStorage.getItem('semestres'));
+  semestres: any[] = JSON.parse(localStorage.getItem('semestres'));
   semestreSelecionado: any;
   curso: any;
   turma: any;
@@ -26,19 +27,46 @@ export class BoletimPage implements OnInit {
       private boletimService: BoletimService,
       private turmaService: TurmaService,
       private cursoService: CursoService,
-      private util: UtilProvider
+      private util: UtilProvider,
+      private router: ActivatedRoute
   ) { }
 
   ngOnInit() {
+
+    console.log(this.semestres);
+
     this.aluno = JSON.parse(localStorage.getItem('aluno'));
     this.curso = JSON.parse(localStorage.getItem('curso'));
+
+
+
+    const ano  = this.router.snapshot.queryParamMap.get("ano");
+    const semestre  = this.router.snapshot.queryParamMap.get("semestre");
+
+
+    for (let index = 0; index < this.semestres.length; index++) {
+      if (ano === this.semestres[index].ano && semestre === this.semestres[index].seqano ) {
+        this.semestreSelecionado = this.semestres[index];
+        this.getBoletim();
+        console.log('return')
+        return;
+      }  
+    }
+
     this.getPeriodo(this.semestres.length-1);
+    console.log('não deu returno')
+
+
     if(!this.turma)
-      this.getTurma() 
+    this.getTurma() 
+
   }
 
 
   getPeriodo(indice) {
+
+
+
     const load = this.util.loading('Gerando boletim', 1000);
     this.semestreSelecionado = <any>this.semestres[indice];
     this.getBoletim();
@@ -48,7 +76,7 @@ export class BoletimPage implements OnInit {
     this.boletimService.getBoletim({matricula: this.aluno.matric, ano: this.semestreSelecionado.ano , periodo: this.semestreSelecionado.seqano}).subscribe(
       (res) => {
         this.disciplinas = res.body;
-        console.log(res);       
+        // console.log(res);       
       },
       (error) => {
         console.log(error);
@@ -59,7 +87,7 @@ export class BoletimPage implements OnInit {
   getCurso() {
     this.cursoService.getCurso({cod: this.turma.curso}).subscribe(
       (res) => {
-        console.log(res.body);
+        // console.log(res.body);
         this.curso = res.body;
         localStorage.setItem('curso', JSON.stringify( this.curso));
       }
@@ -73,10 +101,10 @@ export class BoletimPage implements OnInit {
         this.turma = res.body;
         if(!this.curso)
         this.getCurso();
-        console.log(this.turma)
+        // console.log(this.turma)
       },
       (error) => {
-        console.log(error);
+        // console.log(error);
       }
     );
   }
@@ -87,7 +115,7 @@ export class BoletimPage implements OnInit {
     setTimeout(() => {
      const w = window;
       w.print();
-      window.location.href = '/boletim?teste=1';
+      window.location.href = '/boletim?ano='+ this.semestreSelecionado.ano +'&semestre='+ this.semestreSelecionado.seqano;
       this.printActive = false;
       this.util.menuEmitter.emit(true);
     }, 100);
