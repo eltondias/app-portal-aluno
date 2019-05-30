@@ -74,6 +74,8 @@ export class AppComponent implements OnInit {
   logOut() {
     console.log('logOut')
     localStorage.removeItem('aluno');
+    localStorage.removeItem('curso');
+    localStorage.removeItem('semestres');
 
    
     const retorno = this.util.loading('Até mais...', 500);
