@@ -21,11 +21,21 @@ export class AppComponent implements OnInit {
       url: '/home',
       icon: 'home'
     },
-    // {
-    //   title: 'Declaração IR',
-    //   url: '/declaracao-ir',
-    //   icon: 'document'
-    // },
+    {
+      title: 'Dados Cadastrais',
+      url: '/pagina/dadoscadastrais',
+      icon: 'person'
+    },
+    {
+      title: 'Meu curso',
+      url: '/pagina/meucurso',
+      icon: 'school'
+    },
+    {
+      title: 'Diário de classe',
+      url: '/pagina/diariodeclasse',
+      icon: 'bookmarks'
+    },
     {
       title: 'Boletim',
       url: '/boletim',
@@ -35,7 +45,24 @@ export class AppComponent implements OnInit {
       title: 'Mensalidade',
       url: '/mensalidade',
       icon: 'logo-usd'
+    },
+    {
+      title: 'Professor por disciplina',
+      url: '/pagina/professorpordisciplina',
+      icon: 'accessibility'
+    },
+    {
+      title: 'Disciplinas cursadas',
+      url: '/pagina/disciplinascursadas',
+      icon: 'check_circle'
+    },
+    {
+      title: 'Biblioteca',
+      url: '/pagina/biblioteca',
+      icon: 'book'
     }
+
+
   ];
 
   constructor(

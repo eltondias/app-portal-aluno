@@ -17,7 +17,9 @@ const routes: Routes = [
   { path: 'login', loadChildren:  './login/login.module#LoginPageModule'},
   { path: 'mensalidade', loadChildren: './mensalidade/mensalidade.module#MensalidadePageModule', canActivate: [AuthGuard] },
   { path: 'boletim', loadChildren: './boletim/boletim.module#BoletimPageModule', canActivate: [AuthGuard] },
-  { path: 'declaracao-ir', loadChildren: './declaracao-ir/declaracao-ir.module#DeclaracaoIrPageModule', canActivate: [AuthGuard] }
+  { path: 'declaracao-ir', loadChildren: './declaracao-ir/declaracao-ir.module#DeclaracaoIrPageModule', canActivate: [AuthGuard] },
+  { path: 'frame', loadChildren: './frame/frame.module#FramePageModule' },
+  { path: 'pagina/:page', loadChildren: './pagina/pagina.module#PaginaPageModule' }
 ];
 
 @NgModule({
