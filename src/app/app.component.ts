@@ -21,21 +21,21 @@ export class AppComponent implements OnInit {
       url: '/home',
       icon: 'home'
     },
-    {
-      title: 'Dados Cadastrais',
-      url: '/pagina/dadoscadastrais',
-      icon: 'person'
-    },
-    {
-      title: 'Meu curso',
-      url: '/pagina/meucurso',
-      icon: 'school'
-    },
-    {
-      title: 'Diário de classe',
-      url: '/pagina/diariodeclasse',
-      icon: 'bookmarks'
-    },
+    // {
+    //   title: 'Dados Cadastrais',
+    //   url: '/pagina/dadoscadastrais',
+    //   icon: 'person'
+    // },
+    // {
+    //   title: 'Meu curso',
+    //   url: '/pagina/meucurso',
+    //   icon: 'school'
+    // },
+    // {
+    //   title: 'Diário de classe',
+    //   url: '/pagina/diariodeclasse',
+    //   icon: 'bookmarks'
+    // },
     {
       title: 'Boletim',
       url: '/boletim',
@@ -46,21 +46,21 @@ export class AppComponent implements OnInit {
       url: '/mensalidade',
       icon: 'logo-usd'
     },
-    {
-      title: 'Professor por disciplina',
-      url: '/pagina/professorpordisciplina',
-      icon: 'accessibility'
-    },
-    {
-      title: 'Disciplinas cursadas',
-      url: '/pagina/disciplinascursadas',
-      icon: 'check_circle'
-    },
-    {
-      title: 'Biblioteca',
-      url: '/pagina/biblioteca',
-      icon: 'book'
-    }
+    // {
+    //   title: 'Professor por disciplina',
+    //   url: '/pagina/professorpordisciplina',
+    //   icon: 'accessibility'
+    // },
+    // {
+    //   title: 'Disciplinas cursadas',
+    //   url: '/pagina/disciplinascursadas',
+    //   icon: 'check_circle'
+    // },
+    // {
+    //   title: 'Biblioteca',
+    //   url: '/pagina/biblioteca',
+    //   icon: 'book'
+    // }
 
 
   ];
